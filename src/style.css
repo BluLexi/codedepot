@@ -1,8 +1,11 @@
 :root {
-	--remotion-font: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
-		Noto Sans, sans-serif, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji';
+	--remotion-font: Montserrat, system-ui, -apple-system, Segoe UI, Roboto,
+		Ubuntu, Cantarell, Noto Sans, sans-serif, 'Segoe UI', Roboto, Helvetica,
+		Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 	--base-size: 48px;
+	--base-primary: #4169e1;
+	--base-blue: #2a5cf5;
+	--base-yellow: #e0ff57;
 }
 
 .audio-viz {
@@ -13,6 +16,7 @@
 	justify-content: center;
 	gap: calc(var(--base-size) * 0.25);
 	margin-top: var(--base-size);
+	margin-bottom: var(--base-size);
 }
 
 .bar {
@@ -32,12 +36,15 @@
 }
 
 .row {
+	/* margin-top: 237px; */
 	display: flex;
 	flex-direction: row;
 }
 
 .cover {
-	border-radius: 6px;
+	border-radius: 48px;
+	max-height: 300px;
+	max-width: 300px;
 }
 
 .title {
@@ -45,8 +52,45 @@
 	line-height: 1.25;
 	font-weight: 800;
 	color: rgba(55, 65, 81, 1);
-	font-size: var(--base-size);
+	font-size: calc(var(--base-size) * 1.05);
 }
+
+.blulexi-title {
+	font-size: 64px;
+	max-height: 237px;
+	height: 237px;
+	margin: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	border-radius: 32px;
+	align-self: center;
+}
+
+.blulexi-footer {
+	font-size: 42px;
+	max-height: 267px;
+	height: 267px;
+	margin: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
+	border-radius: 32px;
+	align-self: center;
+
+	position: absolute;
+	bottom: calc(1.5 * var(--base-size));
+	padding: var(--base-size);
+	fontweight: 200;
+
+	text-align: center;
+}
+
+/* .bg-color {
+	background: var(--base-primary);
+} */
 
 .captions {
 	margin-top: calc(var(--base-size) * 0.5);

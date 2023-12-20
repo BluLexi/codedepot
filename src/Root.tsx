@@ -10,24 +10,24 @@ export const RemotionRoot: React.FC = () => {
 				component={AudiogramComposition}
 				fps={fps}
 				width={1080}
-				height={1080}
+				height={1920}
 				schema={AudioGramSchema}
 				defaultProps={{
 					// Audio settings
-					audioOffsetInSeconds: 6.9,
+					audioOffsetInSeconds: 0,
 
 					// Title settings
-					audioFileName: staticFile('audio.mp3'),
+					audioFileName: staticFile('audio1.mp3'),
 					coverImgFileName: staticFile('cover.jpg'),
-					titleText:
-						'#234 – Money, Kids, and Choosing Your Market with Justin Jackson of Transistor.fm',
+					titleText: '#1 . About the word ',
+					word: 'disclose',
 					titleColor: 'rgba(186, 186, 186, 0.93)',
 
 					// Subtitles settings
 					subtitlesFileName: staticFile('subtitles.srt'),
 					onlyDisplayCurrentSentence: true,
 					subtitlesTextColor: 'rgba(255, 255, 255, 0.93)',
-					subtitlesLinePerPage: 4,
+					subtitlesLinePerPage: 7,
 					subtitlesZoomMeasurerSize: 10,
 					subtitlesLineHeight: 98,
 
@@ -37,7 +37,7 @@ export const RemotionRoot: React.FC = () => {
 					waveLinesToDisplay: 29,
 					waveNumberOfSamples: '256', // This is string for Remotion controls and will be converted to a number
 					mirrorWave: true,
-					durationInSeconds: 29.5,
+					durationInSeconds: 79,
 				}}
 				// Determine the length of the video based on the duration of the audio file
 				calculateMetadata={({ props }) => {

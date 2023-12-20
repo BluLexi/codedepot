@@ -1,8 +1,8 @@
 export const ensureFont = () => {
 	if (typeof window !== 'undefined' && 'FontFace' in window) {
 		const font = new FontFace(
-			'IBM Plex Sans',
-			'url(https://fonts.gstatic.com/s/ibmplexsans/v14/zYX9KVElMYYaJe8bpLHnCwDKjQ76AIFsdP3pBms.woff2)'
+			'Montserrat',
+			'url(https://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2)'
 		);
 		return font.load().then(() => {
 			document.fonts.add(font);

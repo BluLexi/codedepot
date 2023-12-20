@@ -39,6 +39,7 @@ export const AudioGramSchema = z.object({
 			}
 		),
 	titleText: z.string(),
+	word: z.string(),
 	titleColor: zColor(),
 	waveColor: zColor(),
 	subtitlesTextColor: zColor(),
@@ -106,7 +107,7 @@ const AudioViz: React.FC<{
 						className="bar"
 						style={{
 							minWidth: '1px',
-							backgroundColor: waveColor,
+							backgroundColor: `var(--base-primary)`,
 							height: `${500 * Math.sqrt(v)}%`,
 						}}
 					/>
@@ -121,6 +122,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 	audioFileName,
 	coverImgFileName,
 	titleText,
+	word,
 	titleColor,
 	subtitlesTextColor,
 	subtitlesLinePerPage,
@@ -167,43 +169,56 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 					<div
 						className="container"
 						style={{
-							fontFamily: 'IBM Plex Sans',
+							fontFamily: 'Montserrat',
 						}}
 					>
-						<div className="row">
-							<Img className="cover" src={coverImgFileName} />
+						<h1 className="blulexi-title">
+							{/* Let’s conquer English language, one word at a time 😎🚀 */}
+						</h1>
 
-							<div className="title" style={{ color: titleColor }}>
-								{titleText}
+						<div className="bg-color">
+							<div className="row">
+								<Img className="cover" src={coverImgFileName} />
+
+								<div className="title" style={{ color: titleColor }}>
+									{titleText}
+									<span style={{ color: 'var(--base-yellow)' }}>"{word}"</span>
+								</div>
+							</div>
+
+							<div>
+								<AudioViz
+									audioSrc={audioFileName}
+									mirrorWave={mirrorWave}
+									waveColor={waveColor}
+									numberOfSamples={Number(waveNumberOfSamples)}
+									freqRangeStartIndex={waveFreqRangeStartIndex}
+									waveLinesToDisplay={waveLinesToDisplay}
+								/>
+							</div>
+
+							<div
+								style={{ lineHeight: `${subtitlesLineHeight}px` }}
+								className="captions"
+							>
+								<PaginatedSubtitles
+									subtitles={subtitles}
+									startFrame={audioOffsetInFrames}
+									endFrame={audioOffsetInFrames + durationInFrames}
+									linesPerPage={subtitlesLinePerPage}
+									subtitlesTextColor={subtitlesTextColor}
+									subtitlesZoomMeasurerSize={subtitlesZoomMeasurerSize}
+									subtitlesLineHeight={subtitlesLineHeight}
+									onlyDisplayCurrentSentence={onlyDisplayCurrentSentence}
+								/>
 							</div>
 						</div>
 
-						<div>
-							<AudioViz
-								audioSrc={audioFileName}
-								mirrorWave={mirrorWave}
-								waveColor={waveColor}
-								numberOfSamples={Number(waveNumberOfSamples)}
-								freqRangeStartIndex={waveFreqRangeStartIndex}
-								waveLinesToDisplay={waveLinesToDisplay}
-							/>
-						</div>
-
-						<div
-							style={{ lineHeight: `${subtitlesLineHeight}px` }}
-							className="captions"
-						>
-							<PaginatedSubtitles
-								subtitles={subtitles}
-								startFrame={audioOffsetInFrames}
-								endFrame={audioOffsetInFrames + durationInFrames}
-								linesPerPage={subtitlesLinePerPage}
-								subtitlesTextColor={subtitlesTextColor}
-								subtitlesZoomMeasurerSize={subtitlesZoomMeasurerSize}
-								subtitlesLineHeight={subtitlesLineHeight}
-								onlyDisplayCurrentSentence={onlyDisplayCurrentSentence}
-							/>
-						</div>
+						<h2 className="blulexi-footer">
+							🤖 Follow for Daily Wordy Wonders! 🌟
+							<br />
+							<span style={{ color: 'var(--base-primary)' }}>@BluLexiAI</span>
+						</h2>
 					</div>
 				</Sequence>
 			</AbsoluteFill>
