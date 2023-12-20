@@ -117,7 +117,7 @@ const AudioViz: React.FC<{
 						className="bar"
 						style={{
 							minWidth: '1px',
-							backgroundColor: `var(--base-primary)`,
+							backgroundColor: 'white',
 							height: `${500 * Math.sqrt(v)}%`,
 						}}
 					/>
@@ -182,12 +182,12 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 							fontFamily: 'Montserrat',
 						}}
 					>
-						<h1 className="blulexi-title">
-							{/* Let’s conquer English language, one word at a time 😎🚀 */}
-						</h1>
+						<div className="stage">
+							<div className="box bounce" />
+						</div>
 
-						<div className="bg-color">
-							<div className="row">
+						<div className="bg-color glass-effect">
+							<div className="row from-top">
 								<Img className="cover" src={coverImgFileName} />
 
 								<div className="title" style={{ color: titleColor }}>
@@ -207,13 +207,9 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 								/>
 							</div>
 
-							<div className="stage">
-								<div className="box bounce-7"></div>
-							</div>
-
 							<div
 								style={{ lineHeight: `${subtitlesLineHeight}px` }}
-								className="captions glass-effect"
+								className="captions"
 							>
 								<PaginatedSubtitles
 									subtitles={subtitles}

@@ -27,7 +27,7 @@ export const RemotionRoot: React.FC = () => {
 					subtitlesFileName: staticFile('subtitles.srt'),
 					onlyDisplayCurrentSentence: true,
 					subtitlesTextColor: 'rgba(255, 255, 255, 0.93)',
-					subtitlesLinePerPage: 7,
+					subtitlesLinePerPage: 8,
 					subtitlesZoomMeasurerSize: 10,
 					subtitlesLineHeight: 98,
 
