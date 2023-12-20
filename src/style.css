@@ -6,6 +6,8 @@
 	--base-primary: #4169e1;
 	--base-blue: #2a5cf5;
 	--base-yellow: #e0ff57;
+	--base-bg: #0a60af;
+	--base-circle: #70ccf9;
 }
 
 .audio-viz {
@@ -31,7 +33,7 @@
 	height: 100%;
 	color: white;
 	padding: var(--base-size);
-	background-color: black;
+	background-color: var(--base-bg);
 	font-family: var(--remotion-font);
 }
 
@@ -88,14 +90,63 @@
 	text-align: center;
 }
 
-/* .bg-color {
-	background: var(--base-primary);
-} */
-
 .captions {
 	margin-top: calc(var(--base-size) * 0.5);
 	font-size: calc(var(--base-size) * 1.5);
 	font-weight: 600;
+	min-height: 700px;
+}
+.glass-effect {
+	background: rgba(255, 255, 255, 0.2); /* Adjust color and opacity */
+	border-radius: 60px; /* Optional: for rounded corners */
+	padding: 64px; /* Optional: for some spacing */
+	backdrop-filter: blur(200px); /* This creates the frosted glass effect */
+	-webkit-backdrop-filter: blur(200px); /* For Safari */
+}
+
+.stage {
+	position: absolute;
+	display: flex;
+	height: 330px;
+	width: 100%;
+}
+
+.box {
+	align-self: flex-end;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	background-color: var(--base-circle);
+	transform-origin: bottom;
+	margin: 0 auto 0 auto;
+	height: 200px;
+	width: 200px;
+	border-radius: 100%;
+}
+
+@keyframes move-around {
+	0% {
+		transform: translate(0, 0);
+	}
+	25% {
+		transform: translate(120vw, 20vh);
+	}
+	50% {
+		transform: translate(50vw, 80vh);
+	}
+	75% {
+		transform: translate(120vw, -40vh);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+.bounce-7 {
+	position: absolute;
+	animation-name: move-around;
+	animation-timing-function: ease-in-out;
+	animation-duration: 4s; /* Slow movement over 2 minutes */
+	animation-iteration-count: infinite;
 }
 
 .promo-container {

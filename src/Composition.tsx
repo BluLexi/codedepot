@@ -207,9 +207,13 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 								/>
 							</div>
 
+							<div className="stage">
+								<div className="box bounce-7"></div>
+							</div>
+
 							<div
 								style={{ lineHeight: `${subtitlesLineHeight}px` }}
-								className="captions"
+								className="captions glass-effect"
 							>
 								<PaginatedSubtitles
 									subtitles={subtitles}
