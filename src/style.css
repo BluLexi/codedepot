@@ -7,8 +7,10 @@
 	--base-blue: #2a5cf5;
 	--base-yellow: #e0ff57;
 	--base-bg: #0a60af;
-	--base-circle: #70ccf9;
-	--base-blur: 170px;
+	--base-circle: #84a7fb;
+	/* #70ccf9; */
+	--base-orange: #191919;
+	--base-blur: 100px;
 }
 
 .audio-viz {
@@ -44,7 +46,7 @@
 }
 
 .cover {
-	border-radius: 48px;
+	border-radius: 24px;
 	max-height: 300px;
 	max-width: 300px;
 }
@@ -71,8 +73,8 @@
 
 	position: absolute;
 	bottom: calc(1.5 * var(--base-size));
-	padding: var(--base-size);
-	fontweight: 200;
+	/* padding: var(--base-size); */
+	font-weight: 200;
 
 	text-align: center;
 }
@@ -90,7 +92,7 @@
 .glass-effect {
 	padding-top: calc(var(--base-size) * 0.5);
 	background: rgba(255, 255, 255, 0.2); /* Adjust color and opacity */
-	padding: 64px;
+	padding: calc(var(--base-size) * 1.6);
 	height: 100%;
 	backdrop-filter: blur(
 		var(--base-blur)

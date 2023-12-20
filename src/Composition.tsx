@@ -26,6 +26,9 @@ export const fps = 30;
 import { PaginatedSubtitles } from './Subtitles';
 import { z } from 'zod';
 import { zColor } from '@remotion/zod-types';
+import { Like } from './icons/Like';
+import { Comment } from './icons/Comment';
+import { Share } from './icons/Share';
 
 export const AudioGramSchema = z.object({
 	durationInSeconds: z.number().positive(),
@@ -186,13 +189,23 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 							<div className="box bounce" />
 						</div>
 
-						<div className="bg-color glass-effect">
+						<div className="glass-effect">
 							<div className="row from-top">
 								<Img className="cover" src={coverImgFileName} />
 
-								<div className="title" style={{ color: titleColor }}>
+								<div
+									className="title"
+									style={{ color: titleColor, marginTop: 'auto' }}
+								>
 									{titleText}
-									<span style={{ color: 'var(--base-yellow)' }}>"{word}"</span>
+									<div
+										style={{
+											color: 'var(--base-orange)',
+											textTransform: 'uppercase',
+										}}
+									>
+										"{word}"
+									</div>
 								</div>
 							</div>
 
@@ -225,9 +238,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 						</div>
 
 						<h2 className="blulexi-footer">
-							Follow
-							<span style={{ color: 'var(--base-primary)' }}> @BluLexiAI </span>
-							For more!
+							Follow @BluLexiAI For more!
 							<br />
 							<div
 								style={{
@@ -235,36 +246,12 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 									justifyContent: 'space-around',
 									maxWidth: '300px',
 									margin: 'auto',
+									marginTop: '14px',
 								}}
 							>
-								<Icon
-									path={mdiHeart}
-									size={3}
-									color="red"
-									style={{
-										marginTop: '4px',
-									}}
-								/>
-
-								<Icon
-									path={mdiChatOutline}
-									size={3}
-									style={{
-										marginTop: '4px',
-									}}
-								/>
-
-								<Icon
-									path={mdiSendVariantOutline}
-									size={3}
-									rotate={-25}
-									style={{
-										marginTop: '0px',
-									}}
-								/>
-								{/* // color="red" */}
-								{/* horizontal
-								vertical */}
+								<Like />
+								<Comment />
+								<Share />
 							</div>
 						</h2>
 					</div>

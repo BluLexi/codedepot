@@ -18,10 +18,10 @@ export const RemotionRoot: React.FC = () => {
 
 					// Title settings
 					audioFileName: staticFile('audio1.mp3'),
-					coverImgFileName: staticFile('cover.jpg'),
-					titleText: '#1 . About the word ',
-					word: 'disclose',
-					titleColor: 'rgba(186, 186, 186, 0.93)',
+					coverImgFileName: staticFile('abondon.jpg'),
+					titleText: 'Daily Word #1',
+					word: 'Disclose',
+					titleColor: 'rgba(286, 286, 286, 0.93)',
 
 					// Subtitles settings
 					subtitlesFileName: staticFile('subtitles.srt'),
