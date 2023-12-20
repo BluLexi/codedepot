@@ -1,5 +1,5 @@
 import { useAudioData, visualizeAudio } from '@remotion/media-utils';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Component } from 'react';
 import {
 	AbsoluteFill,
 	Audio,
@@ -10,6 +10,16 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+
+import Icon from '@mdi/react';
+import {
+	mdiHeartOutline,
+	mdiHeart,
+	mdiChatOutline,
+	mdiSendVariantOutline,
+	mdiShareVariant,
+	mdiBookmarkOutline,
+} from '@mdi/js';
 
 export const fps = 30;
 
@@ -215,9 +225,47 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 						</div>
 
 						<h2 className="blulexi-footer">
-							🤖 Follow for Daily Wordy Wonders! 🌟
+							Follow
+							<span style={{ color: 'var(--base-primary)' }}> @BluLexiAI </span>
+							For more!
 							<br />
-							<span style={{ color: 'var(--base-primary)' }}>@BluLexiAI</span>
+							<div
+								style={{
+									display: 'flex',
+									justifyContent: 'space-around',
+									maxWidth: '300px',
+									margin: 'auto',
+								}}
+							>
+								<Icon
+									path={mdiHeart}
+									size={3}
+									color="red"
+									style={{
+										marginTop: '4px',
+									}}
+								/>
+
+								<Icon
+									path={mdiChatOutline}
+									size={3}
+									style={{
+										marginTop: '4px',
+									}}
+								/>
+
+								<Icon
+									path={mdiSendVariantOutline}
+									size={3}
+									rotate={-25}
+									style={{
+										marginTop: '0px',
+									}}
+								/>
+								{/* // color="red" */}
+								{/* horizontal
+								vertical */}
+							</div>
 						</h2>
 					</div>
 				</Sequence>
