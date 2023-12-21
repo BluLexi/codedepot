@@ -1,7 +1,12 @@
 {
-  "name": "my-video",
+  "name": "remotion-insta-reel-template",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "My Remotion video template for instagram reels - Blulexi",
+  "author": {
+    "name": "Pouya Mohammadkhani, Yasin Ghasemi, Blulexi co.",
+    "email": "Blulexi.co@gmail.com",
+    "url": "https://Blulexi.com"
+  },
   "scripts": {
     "start": "remotion studio",
     "build": "remotion render Audiogram out/video.mp4",
