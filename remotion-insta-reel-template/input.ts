@@ -1,6 +1,6 @@
 import { staticFile } from 'remotion';
 
-const videoLength = 79;
+const videoLength = 71;
 const outroLength = 5;
 
 export const Input = {
@@ -12,14 +12,16 @@ export const Input = {
     audioOffsetInSeconds: 0,
 
     // Title settings
-    audioFileName: staticFile('audio1.mp3'),
-    coverImgFileName: staticFile('abondon.jpg'),
+    // ! TODO !
+    audioFileName: staticFile('final/1.abandon.mp3'),
+    coverImgFileName: staticFile('final/abandon.jpg'),
+    subtitlesFileName: staticFile('final/1.abandon-subtitle.srt'),
     titleText: 'Daily Word #1',
-    word: 'Disclose',
-    titleColor: 'rgba(286, 286, 286, 0.93)',
+    word: 'Abandon',
 
+
+    titleColor: 'rgba(286, 286, 286, 0.93)',
     // Subtitles settings
-    subtitlesFileName: staticFile('subtitles.srt'),
     onlyDisplayCurrentSentence: true,
     subtitlesTextColor: 'rgba(255, 255, 255, 0.93)',
     subtitlesLinePerPage: 8,
