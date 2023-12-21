@@ -2,6 +2,8 @@ import { Composition, staticFile } from 'remotion';
 import { AudioGramSchema, AudiogramComposition, fps } from './Composition';
 import './style.css';
 
+import { Input } from '../input';
+
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
@@ -9,36 +11,10 @@ export const RemotionRoot: React.FC = () => {
 				id="Audiogram"
 				component={AudiogramComposition}
 				fps={fps}
-				width={1080}
-				height={1920}
+				width={Input.width}
+				height={Input.height}
 				schema={AudioGramSchema}
-				defaultProps={{
-					// Audio settings
-					audioOffsetInSeconds: 0,
-
-					// Title settings
-					audioFileName: staticFile('audio1.mp3'),
-					coverImgFileName: staticFile('abondon.jpg'),
-					titleText: 'Daily Word #1',
-					word: 'Disclose',
-					titleColor: 'rgba(286, 286, 286, 0.93)',
-
-					// Subtitles settings
-					subtitlesFileName: staticFile('subtitles.srt'),
-					onlyDisplayCurrentSentence: true,
-					subtitlesTextColor: 'rgba(255, 255, 255, 0.93)',
-					subtitlesLinePerPage: 8,
-					subtitlesZoomMeasurerSize: 10,
-					subtitlesLineHeight: 98,
-
-					// Wave settings
-					waveColor: '#a3a5ae',
-					waveFreqRangeStartIndex: 7,
-					waveLinesToDisplay: 29,
-					waveNumberOfSamples: '256', // This is string for Remotion controls and will be converted to a number
-					mirrorWave: true,
-					durationInSeconds: 79,
-				}}
+				defaultProps={Input.defaultProps}
 				// Determine the length of the video based on the duration of the audio file
 				calculateMetadata={({ props }) => {
 					return {

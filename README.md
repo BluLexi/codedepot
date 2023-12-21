@@ -1,3 +1,13 @@
+# Make video
+1. Select a 'word'
+2. Explain the 'word' using the Prompt Yasin developled for ChatGPT.
+3. Get speech of the 'word' explanation (.mp3) via Colab code by Yasin.
+4. Magically put every word in every line. (VSCode + .txt) [replace all ' ' with 'ctrl + Enter']
+5. Give .txt file and .mp3 file to Colab code to generate .str for the audio (.str)
+6. Give both .mp3 and .str file to Remotion project and generate video (React + .mp4)
+7. Test & tweak the colors, Done!
+
+
 # Remotion Audiogram Template
 
 This template is for creating "audiograms". In other words, video clips from podcast episodes, or any other audio. It's a popular way of sharing audio snippets on social media.

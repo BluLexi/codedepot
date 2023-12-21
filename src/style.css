@@ -109,7 +109,7 @@
 	width: 100vh;
 }
 
-.box {
+/* .box {
 	align-self: flex-end;
 	background-color: var(--base-circle);
 	transform-origin: bottom;
@@ -117,9 +117,9 @@
 	height: 400px;
 	width: 400px;
 	border-radius: 100%;
-}
+} */
 
-@keyframes move-around {
+/* @keyframes move-around {
 	0% {
 		transform: translate(35vw, -188vh);
 	}
@@ -135,15 +135,33 @@
 	100% {
 		transform: translate(35vw, -188vh);
 	}
+} */
+
+/* @keyframes move-around {
+	0% {
+		transform: translate(-123px, -1387px);
+	}
+	25% {
+		transform: translate(276px, -675px);
+	}
+	50% {
+		transform: translate(-456px, 295px);
+	}
+	75% {
+		transform: translate(380px, -981px);
+	}
+	100% {
+		transform: translate(-123px, -1387px);
+	}
 }
 
 .bounce {
 	position: relative;
 	animation-name: move-around;
 	animation-timing-function: ease-in-out;
-	animation-duration: 20s; /* Slow movement over 2 minutes */
+	animation-duration: 20s; 
 	animation-iteration-count: infinite;
-}
+} */
 
 .promo-container {
 	width: 100%;

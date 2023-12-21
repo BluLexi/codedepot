@@ -1,5 +1,5 @@
 import { useAudioData, visualizeAudio } from '@remotion/media-utils';
-import React, { useEffect, useRef, useState, Component } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
 	AbsoluteFill,
 	Audio,
@@ -11,15 +11,56 @@ import {
 	useVideoConfig,
 } from 'remotion';
 
-import Icon from '@mdi/react';
-import {
-	mdiHeartOutline,
-	mdiHeart,
-	mdiChatOutline,
-	mdiSendVariantOutline,
-	mdiShareVariant,
-	mdiBookmarkOutline,
-} from '@mdi/js';
+import { interpolate, spring } from 'remotion';
+
+const Box = () => {
+	const frame = useCurrentFrame();
+	const durationInFrames = 20 * 60; // Example duration at 60fps
+
+	// Interpolate values for each keyframe
+	const translateY = spring({
+		fps: 60,
+		frame,
+		config: {
+			damping: 200,
+		},
+		from: -1387,
+		to: 295, // Adjust based on translateY range
+		durationInFrames,
+	});
+
+	const scaleX = interpolate(
+		frame,
+		[
+			0,
+			durationInFrames / 4,
+			durationInFrames / 2,
+			(3 * durationInFrames) / 4,
+			durationInFrames,
+		],
+		[-123, 276, -456, 380, -123]
+	);
+
+	// Set transform origin to bottom
+	const transformOrigin = 'bottom';
+
+	return (
+		<AbsoluteFill style={{ justifyContent: 'flex-end', alignItems: 'center' }}>
+			<div
+				style={{
+					transform: `translate(${scaleX}rem, ${translateY}rem)`,
+					transformOrigin,
+					backgroundColor: 'var(--base-circle)',
+					height: '25rem',
+					width: '25rem',
+					borderRadius: '50%',
+					position: 'relative',
+					margin: '0 auto',
+				}}
+			/>
+		</AbsoluteFill>
+	);
+};
 
 export const fps = 30;
 
@@ -29,6 +70,7 @@ import { zColor } from '@remotion/zod-types';
 import { Like } from './icons/Like';
 import { Comment } from './icons/Comment';
 import { Share } from './icons/Share';
+import { Outro } from './Outro';
 
 export const AudioGramSchema = z.object({
 	durationInSeconds: z.number().positive(),
@@ -64,6 +106,8 @@ export const AudioGramSchema = z.object({
 	waveLinesToDisplay: z.number().int().min(0),
 	waveFreqRangeStartIndex: z.number().int().min(0),
 	waveNumberOfSamples: z.enum(['32', '64', '128', '256', '512']),
+	footerTitle: z.string(),
+	endingTitle: z.string(),
 });
 
 type AudiogramCompositionSchemaType = z.infer<typeof AudioGramSchema>;
@@ -120,7 +164,7 @@ const AudioViz: React.FC<{
 						className="bar"
 						style={{
 							minWidth: '1px',
-							backgroundColor: 'white',
+							backgroundColor: waveColor,
 							height: `${500 * Math.sqrt(v)}%`,
 						}}
 					/>
@@ -148,6 +192,9 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 	onlyDisplayCurrentSentence,
 	mirrorWave,
 	audioOffsetInSeconds,
+	durationInSeconds,
+	endingTitle,
+	footerTitle,
 }) => {
 	const { durationInFrames } = useVideoConfig();
 
@@ -177,7 +224,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 		<div ref={ref}>
 			<AbsoluteFill>
 				<Sequence from={-audioOffsetInFrames}>
-					<Audio src={audioFileName} />
+					<Audio src={audioFileName} placeholder={undefined} />
 
 					<div
 						className="container"
@@ -185,13 +232,15 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 							fontFamily: 'Montserrat',
 						}}
 					>
-						<div className="stage">
-							<div className="box bounce" />
-						</div>
+						<Box />
 
 						<div className="glass-effect">
 							<div className="row from-top">
-								<Img className="cover" src={coverImgFileName} />
+								<Img
+									className="cover"
+									src={coverImgFileName}
+									placeholder={undefined}
+								/>
 
 								<div
 									className="title"
@@ -238,7 +287,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 						</div>
 
 						<h2 className="blulexi-footer">
-							Follow @BluLexiAI For more!
+							{footerTitle}
 							<br />
 							<div
 								style={{
@@ -255,6 +304,9 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 							</div>
 						</h2>
 					</div>
+				</Sequence>
+				<Sequence from={(durationInSeconds - 5) * fps}>
+					<Outro titleText={endingTitle} />
 				</Sequence>
 			</AbsoluteFill>
 		</div>
