@@ -1,4 +1,4 @@
-import { Composition, staticFile } from 'remotion';
+import { Composition } from 'remotion';
 import { AudioGramSchema, AudiogramComposition, fps } from './Composition';
 import './style.css';
 

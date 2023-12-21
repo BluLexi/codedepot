@@ -75,6 +75,7 @@ import { Outro } from './Outro';
 export const AudioGramSchema = z.object({
 	durationInSeconds: z.number().positive(),
 	audioOffsetInSeconds: z.number().min(0),
+	delayAtFirstSeconds: z.number().min(0),
 	subtitlesFileName: z.string().refine((s) => s.endsWith('.srt'), {
 		message: 'Subtitles file must be a .srt file',
 	}),
@@ -175,6 +176,7 @@ const AudioViz: React.FC<{
 };
 
 export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
+	bgColor,
 	subtitlesFileName,
 	audioFileName,
 	coverImgFileName,
@@ -192,6 +194,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 	onlyDisplayCurrentSentence,
 	mirrorWave,
 	audioOffsetInSeconds,
+	delayAtFirstSeconds,
 	durationInSeconds,
 	endingTitle,
 	footerTitle,
@@ -219,17 +222,74 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 	}
 
 	const audioOffsetInFrames = Math.round(audioOffsetInSeconds * fps);
+	const delayAtFirstInFrames = Math.round(delayAtFirstSeconds * fps);
+	const outroInFrame = Math.round((durationInSeconds - 4) * fps);
 
 	return (
 		<div ref={ref}>
 			<AbsoluteFill>
-				<Sequence from={-audioOffsetInFrames}>
+				<Sequence durationInFrames={delayAtFirstInFrames}>
+					<div
+						className="container"
+						style={{
+							fontFamily: 'Montserrat',
+							backgroundColor: bgColor,
+						}}
+					>
+						{/* <Box /> */}
+
+						<div className="glass-effect">
+							<div className="row from-top">
+								<Img
+									className="cover"
+									src={coverImgFileName}
+									placeholder={undefined}
+								/>
+
+								<div
+									className="title"
+									style={{ color: titleColor, marginTop: 'auto' }}
+								>
+									{titleText}
+									<div
+										style={{
+											color: 'var(--base-orange)',
+											textTransform: 'uppercase',
+										}}
+									>
+										"{word}"
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<h2 className="blulexi-footer">
+							{footerTitle}
+							<br />
+							<div
+								style={{
+									display: 'flex',
+									justifyContent: 'space-around',
+									maxWidth: '300px',
+									margin: 'auto',
+									marginTop: '14px',
+								}}
+							>
+								<Like />
+								<Comment />
+								<Share />
+							</div>
+						</h2>
+					</div>
+				</Sequence>
+				<Sequence from={-audioOffsetInFrames + delayAtFirstInFrames}>
 					<Audio src={audioFileName} placeholder={undefined} />
 
 					<div
 						className="container"
 						style={{
 							fontFamily: 'Montserrat',
+							backgroundColor: bgColor,
 						}}
 					>
 						<Box />
@@ -305,7 +365,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 						</h2>
 					</div>
 				</Sequence>
-				<Sequence from={(durationInSeconds - 5) * fps}>
+				<Sequence from={outroInFrame}>
 					<Outro titleText={endingTitle} />
 				</Sequence>
 			</AbsoluteFill>

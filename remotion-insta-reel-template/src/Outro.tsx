@@ -1,7 +1,12 @@
-import {AbsoluteFill, Sequence} from 'remotion';
-import {interpolate, useCurrentFrame} from 'remotion';
-import {Img, staticFile} from 'remotion';
-import {z} from 'zod';
+import {
+	AbsoluteFill,
+	useVideoConfig,
+	interpolate,
+	useCurrentFrame,
+	Img,
+	staticFile,
+} from 'remotion';
+import { z } from 'zod';
 
 const style: React.CSSProperties = {
 	position: 'absolute',
@@ -26,18 +31,25 @@ export const myCompSchema2 = z.object({
 	titleText: z.string(),
 });
 
-export const Logo: React.FC<z.infer<typeof myCompSchema2>> = ({titleText}) => {
+export const Logo: React.FC<z.infer<typeof myCompSchema2>> = ({
+	titleText,
+}) => {
 	const frame = useCurrentFrame();
-	const opacity = interpolate(frame, [0, 30], [0, 1]);
+	const { durationInFrames } = useVideoConfig();
+	const opacity = interpolate(
+		frame,
+		[0, 30, durationInFrames - 30, durationInFrames],
+		[0, 1, 1, 0]
+	);
 
 	return (
 		<AbsoluteFill>
 			<Img
-				style={{...style, opacity}}
+				style={{ ...style, opacity }}
 				src={staticFile('cover.jpg')}
 				placeholder="cover"
 			/>
-			<div style={{...title, opacity}}>{titleText}</div>
+			<div style={{ ...title, opacity }}>{titleText}</div>
 		</AbsoluteFill>
 	);
 };
@@ -50,10 +62,8 @@ export const Outro: React.FC<z.infer<typeof myCompSchema>> = ({
 	titleText: propOne,
 }) => {
 	return (
-		<AbsoluteFill style={{backgroundColor: 'white'}}>
-			{/* <Sequence from={35}> */}
-				<Logo titleText={propOne} />
-			{/* </Sequence> */}
+		<AbsoluteFill style={{ backgroundColor: 'white' }}>
+			<Logo titleText={propOne} />
 		</AbsoluteFill>
 	);
 };

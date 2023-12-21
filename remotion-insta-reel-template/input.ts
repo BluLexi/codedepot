@@ -1,24 +1,34 @@
 import { staticFile } from 'remotion';
 
-const videoLength = 71;
+// ! Change inputs here
+const videoLength = 81;
 const outroLength = 5;
+const number = 2
+const word = 'Bashful'
+const name = `${number}.${word}`
+const delay = 0.5
+// '#0a60af' '#5D3587' '#820300' '#3559E0' '#65B741'
+const bgColor = '#3559E0' // '#5D3587'
 
 export const Input = {
   id: "Audiogram",
   width: 1080,
   height: 1920,
   defaultProps: {
+    bgColor,
+
     // Audio settings
     audioOffsetInSeconds: 0,
+    delayAtFirstSeconds: delay,
+    durationInSeconds: delay + videoLength + outroLength,
 
     // Title settings
     // ! TODO !
-    audioFileName: staticFile('final/1.abandon.mp3'),
-    coverImgFileName: staticFile('final/abandon.jpg'),
-    subtitlesFileName: staticFile('final/1.abandon-subtitle.srt'),
-    titleText: 'Daily Word #1',
-    word: 'Abandon',
-
+    audioFileName: staticFile(`final/${name}.mp3`),
+    coverImgFileName: staticFile(`final/${name}.jpg`),
+    subtitlesFileName: staticFile(`final/${name}-subtitle.srt`),
+    titleText: `Daily Word #${number}`,
+    word,
 
     titleColor: 'rgba(286, 286, 286, 0.93)',
     // Subtitles settings
@@ -34,7 +44,6 @@ export const Input = {
     waveLinesToDisplay: 29,
     waveNumberOfSamples: '256', // This is string for Remotion controls and will be converted to a number
     mirrorWave: true,
-    durationInSeconds: videoLength + outroLength,
 
     // Footer
     footerTitle: 'Follow @BluLexiAI For more!',
