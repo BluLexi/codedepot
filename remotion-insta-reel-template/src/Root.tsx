@@ -8,7 +8,7 @@ export const RemotionRoot: React.FC = () => {
 	return (
 		<>
 			<Composition
-				id="Audiogram"
+				id={Input.id}
 				component={AudiogramComposition}
 				fps={fps}
 				width={Input.width}

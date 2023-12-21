@@ -11,7 +11,7 @@ const delay = 0.5
 const bgColor = '#3559E0' // '#5D3587'
 
 export const Input = {
-  id: "Audiogram",
+  id: word,
   width: 1080,
   height: 1920,
   defaultProps: {
