@@ -1,30 +1,17 @@
-# Make video
-1. Select a 'word'
-2. Explain the 'word' using the Prompt Yasin developled for ChatGPT.
-3. Get speech of the 'word' explanation (.mp3) via Colab code by Yasin.
-4. Magically put every word in every line. (VSCode + .txt) [replace all ' ' with 'ctrl + Enter']
-5. Give .txt file and .mp3 file to Colab code to generate .str for the audio (.str)
-6. Give both .mp3 and .str file to Remotion project and generate video (React + .mp4)
-7. Test & tweak the colors, Done!
+# The Template for BluLexi Instagram Reels
+
+Explore transforming a "word" into a captivating video using ChatGPT and Remotion. Following is a walk-through for creating  an engaging audio-visual masterpiece.
+
+1. Start by choosing a specific "word" you want to work on.
+2. Utilize ChatGPT to articulate an explanation for the chosen "word."
+3. Generate an audio file for the "word" in the form of an .mp3 file. The preferred choice is OpenAI's TTS model. But anything works.
+4. Open VSCode and create a new .txt file. Input each word of the explanation on separate lines [replace all ' ' with 'ctrl + Enter' or 'cmd + return'].
+5. Feed both the .txt file and the previously generated .mp3 file into the given python script to produce a .str file for the audio.
+6. Take the resulting .mp3 and .str files and provide them to the template for video generation. Utilize React and save the final output as a .mp4 file.
+7. Conduct testing and make necessary adjustments to color settings until satisfied. Once completed, consider the task done!
 
 
-# Remotion Audiogram Template
-
-This template is for creating "audiograms". In other words, video clips from podcast episodes, or any other audio. It's a popular way of sharing audio snippets on social media.
-
-[Example video](https://twitter.com/marcusstenbeck/status/1460641903326732300)
-
-<p align="center">
-  <img src="https://github.com/marcusstenbeck/remotion-template-audiogram/raw/main/Promo.png">
-</p>
-
-Start changing things like this:
-
-- Adjust size and length in `src/Video.tsx`
-- Replacing audio, cover and subtitles in the `src/assets` folder
-- Tweak `src/Composition.tsx`
-
-## How do I render my video?
+## How to render the video?
 
 Run this:
 
@@ -33,17 +20,6 @@ pnpm build
 ```
 
 Or check out the [Remotion docs](/docs/render/). There are lots of ways to render.
-
-## Where to get a transcript (SRT file)?
-
-There are a few places:
-
-- Your podcasting host might provide them for you.
-- Descript makes transcription really easy.
-- There are tons of other, paid solutions, like [Otter.ai](https://otter.ai) and [Scriptme.io](https://scriptme.io).
-- And open-source solutions available, like [Subs AI](https://github.com/abdeladim-s/subsai)
-
-For the purposes of this repo, make sure to export subtitles that are segmented by word (rather than sentence).
 
 ## Commands
 
@@ -74,14 +50,6 @@ pnpm run upgrade
 ## Docs
 
 Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help [on our Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
 
 ## License
 
