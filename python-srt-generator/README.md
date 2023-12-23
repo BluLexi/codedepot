@@ -1,0 +1,3 @@
+# Subtitle Sync with Python
+
+This tool simplifies the process of generating an SRT file for creating subtitles in Remotion videos. It is particularly useful in conjunction with the [Instagram Reels template](https://github.com/BluLexi/codedepot/tree/main/remotion-insta-reel-template) we have developed. To begin, generate the audio file by running the `generate_audio.py` script, which utilizes OpenAI's TTS model. Subsequently, employ the `generate_srt.py` script to create the SRT file. The generated audio and SRT files are then utilized to produce the Reels video.
