@@ -4,7 +4,7 @@ Welcome to the codedepot repository! This repository is a collection of various 
 
 ## Tools
 - **Remotion Instagram Reels Template:** In this repository, you'll find an Instagram Reels template built using Remotion. Remotion is a powerful library for creating videos programmatically using React. Our template provides a quick and easy way to create engaging and dynamic Instagram Reels content. Check the final product on our [Instagram](instagram.com/blulexiai) page.
-- **Subtitle Sync with Python:** Description of the first utility.
+- **Python SRT Generator:** Simplify Remotion subtitles with this tool.
 - ...
 
 Feel free to explore, use, and contribute to any tool that catches your interest!
@@ -19,3 +19,4 @@ This repository is licensed under the [MIT License](LICENSE.md). Feel free to us
 
 Happy coding!
 BluLexi Dev Team
+
