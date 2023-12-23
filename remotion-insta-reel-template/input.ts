@@ -1,14 +1,14 @@
 import { staticFile } from 'remotion';
 
 // ! Change inputs here
-const videoLength = 81;
+const videoLength = 73;
 const outroLength = 5;
 const number = 2
 const word = 'Bashful'
 const name = `${number}.${word}`
 const delay = 0.5
 // '#0a60af' '#5D3587' '#820300' '#3559E0' '#65B741'
-const bgColor = '#3559E0' // '#5D3587'
+const bgColor = '#0a60af'
 
 export const Input = {
   id: word,
@@ -26,7 +26,7 @@ export const Input = {
     // ! TODO !
     audioFileName: staticFile(`final/${name}.mp3`),
     coverImgFileName: staticFile(`final/${name}.jpg`),
-    subtitlesFileName: staticFile(`final/${name}-subtitle.srt`),
+    subtitlesFileName: staticFile(`final/${name}.srt`),
     titleText: `Daily Word #${number}`,
     word,
 

@@ -84,6 +84,7 @@ export const PaginatedSubtitles: React.FC<{
 					nextWord &&
 					(w.text.endsWith('?') ||
 						w.text.endsWith('.') ||
+						w.text.endsWith(':') ||
 						w.text.endsWith('!')) &&
 					nextWord.start < frame
 				);
