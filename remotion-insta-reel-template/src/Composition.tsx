@@ -79,6 +79,18 @@ export const AudioGramSchema = z.object({
 	subtitlesFileName: z.string().refine((s) => s.endsWith('.srt'), {
 		message: 'Subtitles file must be a .srt file',
 	}),
+	thumbnailFileName: z
+		.string()
+		.refine(
+			(s) =>
+				s.endsWith('.jpg') ||
+				s.endsWith('.jpeg') ||
+				s.endsWith('.png') ||
+				s.endsWith('.bmp'),
+			{
+				message: 'Image file must be a .jpg / .jpeg / .png / .bmp file',
+			}
+		),
 	audioFileName: z.string().refine((s) => s.endsWith('.mp3'), {
 		message: 'Audio file must be a .mp3 file',
 	}),
@@ -179,6 +191,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 	bgColor,
 	subtitlesFileName,
 	audioFileName,
+	thumbnailFileName,
 	coverImgFileName,
 	titleText,
 	word,
@@ -229,58 +242,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 		<div ref={ref}>
 			<AbsoluteFill>
 				<Sequence durationInFrames={delayAtFirstInFrames}>
-					<div
-						className="container"
-						style={{
-							fontFamily: 'Montserrat',
-							backgroundColor: bgColor,
-						}}
-					>
-						{/* <Box /> */}
-
-						<div className="glass-effect">
-							<div className="row from-top">
-								<Img
-									className="cover"
-									src={coverImgFileName}
-									placeholder={undefined}
-								/>
-
-								<div
-									className="title"
-									style={{ color: titleColor, marginTop: 'auto' }}
-								>
-									{titleText}
-									<div
-										style={{
-											color: 'var(--base-orange)',
-											textTransform: 'uppercase',
-										}}
-									>
-										"{word}"
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<h2 className="blulexi-footer">
-							{footerTitle}
-							<br />
-							<div
-								style={{
-									display: 'flex',
-									justifyContent: 'space-around',
-									maxWidth: '300px',
-									margin: 'auto',
-									marginTop: '14px',
-								}}
-							>
-								<Like />
-								<Comment />
-								<Share />
-							</div>
-						</h2>
-					</div>
+					<Img src={thumbnailFileName} placeholder={undefined} />
 				</Sequence>
 				<Sequence from={-audioOffsetInFrames + delayAtFirstInFrames}>
 					<Audio src={audioFileName} placeholder={undefined} />

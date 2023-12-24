@@ -1,10 +1,10 @@
 import { staticFile } from 'remotion';
 
 // ! Change inputs here
-const videoLength = 73;
+const videoLength = 45;
 const outroLength = 5;
-const number = 2
-const word = 'Bashful'
+const number = 1
+const word = 'Abandon'
 const name = `${number}.${word}`
 const delay = 0.5
 // '#0a60af' '#5D3587' '#820300' '#3559E0' '#65B741'
@@ -27,6 +27,7 @@ export const Input = {
     audioFileName: staticFile(`final/${name}.mp3`),
     coverImgFileName: staticFile(`final/${name}.jpg`),
     subtitlesFileName: staticFile(`final/${name}.srt`),
+    thumbnailFileName: staticFile(`final/${name}-thumbnail.jpg`),
     titleText: `Daily Word #${number}`,
     word,
 
