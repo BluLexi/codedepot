@@ -71,6 +71,9 @@ import { Like } from './icons/Like';
 import { Comment } from './icons/Comment';
 import { Share } from './icons/Share';
 import { Outro } from './Outro';
+import { YouTubeLike } from './icons/YouTubeLike';
+import { YouTubeComment } from './icons/YouTubeComment';
+import { YouTubeShare } from './icons/YouTubeShare';
 
 export const AudioGramSchema = z.object({
 	durationInSeconds: z.number().positive(),
@@ -316,13 +319,17 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 									display: 'flex',
 									justifyContent: 'space-around',
 									maxWidth: '300px',
+									width: '300px',
 									margin: 'auto',
 									marginTop: '14px',
 								}}
 							>
-								<Like />
-								<Comment />
-								<Share />
+								<YouTubeLike />
+								{/* <Like /> */}
+								<YouTubeComment />
+								{/* <Comment /> */}
+								{/* <Share /> */}
+								<YouTubeShare />
 							</div>
 						</h2>
 					</div>

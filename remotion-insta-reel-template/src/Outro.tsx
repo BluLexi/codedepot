@@ -46,10 +46,11 @@ export const Logo: React.FC<z.infer<typeof myCompSchema2>> = ({
 		<AbsoluteFill>
 			<Img
 				style={{ ...style, opacity }}
-				src={staticFile('cover.jpg')}
-				placeholder="cover"
+				src={staticFile('logo.jpg')}
+				placeholder="logo"
 			/>
-			<div style={{ ...title, opacity }}>{titleText}</div>
+			{/* <div style={{ ...title, opacity }}>{titleText}</div> */}
+			<div style={{ ...title, opacity }} dangerouslySetInnerHTML={{ __html: titleText }} />
 		</AbsoluteFill>
 	);
 };

@@ -47,9 +47,9 @@ export const Input = {
     mirrorWave: true,
 
     // Footer
-    footerTitle: 'Follow @BluLexiAI For more!',
+    footerTitle: '', // 'Follow @BluLexiAI For more!',
 
     // Ending
-    endingTitle: '@BluLexiAI, Your AI Test Prep Companion'
+    endingTitle: '@BluLexiAI<br>Your AI Test Prep Companion'
   }
 }
