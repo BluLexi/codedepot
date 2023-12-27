@@ -75,6 +75,7 @@ import { Outro } from './Outro';
 import { YouTubeLike } from './icons/YouTubeLike';
 import { YouTubeComment } from './icons/YouTubeComment';
 import { YouTubeShare } from './icons/YouTubeShare';
+import BlurBubble from './BlurBubble';
 
 export const AudioGramSchema = z.object({
 	durationInSeconds: z.number().positive(),
@@ -239,7 +240,7 @@ const HeartbeatIcon: React.FC<HeartbeatIconProps> = ({
 		: 0;
 
 	// Use Math.sin to create an oscillating effect only during the beating period
-	const scale = isBeating ? 1 + 0.1 * Math.sin(beatProgress * 2 * Math.PI) : 1;
+	const scale = isBeating ? 1 + 0.4 * Math.sin(beatProgress * 2 * Math.PI) : 1;
 
 	return (
 		<div style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}>
@@ -281,7 +282,7 @@ const JiggleMotion: React.FC<JiggleMotionProps> = ({
 
 	// Translation is 0 when shouldJiggle is false
 	const translation = shouldJiggle
-		? interpolate(progress, [-1, 1], [-7, 7], {
+		? interpolate(progress, [-1, 1], [-10, 10], {
 				easing: Easing.easeInOutSine,
 		  })
 		: 0;
@@ -359,7 +360,8 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 							backgroundColor: bgColor,
 						}}
 					>
-						<Box />
+						{/* <Box /> */}
+						<BlurBubble />
 
 						<div className="glass-effect">
 							<div className="row from-top">
@@ -426,7 +428,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 									marginTop: '14px',
 								}}
 							>
-								<HeartbeatIcon beatDurationSeconds={2} waitTimeSeconds={5}>
+								<HeartbeatIcon beatDurationSeconds={2} waitTimeSeconds={4}>
 									<YouTubeLike />
 								</HeartbeatIcon>
 								{/* <Like /> */}
@@ -436,7 +438,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 								</JiggleMotion>
 								{/* <Comment /> */}
 								{/* <Share /> */}
-								<HeartbeatIcon beatDurationSeconds={3} waitTimeSeconds={6}>
+								<HeartbeatIcon beatDurationSeconds={2.5} waitTimeSeconds={6}>
 									<YouTubeShare />
 								</HeartbeatIcon>
 							</div>
