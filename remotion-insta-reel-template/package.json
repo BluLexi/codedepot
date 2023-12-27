@@ -8,7 +8,7 @@
     "url": "https://Blulexi.com"
   },
   "scripts": {
-    "start": "remotion studio",
+    "start": "remotion studio --port 4001",
     "build": "remotion render Audiogram out/video.mp4",
     "upgrade": "remotion upgrade",
     "test": "eslint src --ext ts,tsx,js,jsx && tsc"

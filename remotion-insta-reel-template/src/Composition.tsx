@@ -9,6 +9,7 @@ import {
 	Sequence,
 	useCurrentFrame,
 	useVideoConfig,
+	Easing,
 } from 'remotion';
 
 import { interpolate, spring } from 'remotion';
@@ -190,6 +191,107 @@ const AudioViz: React.FC<{
 	);
 };
 
+// const HeartbeatIcon: React.FC<{ children: React.ReactNode }> = ({
+// 	children,
+// }) => {
+// 	const frame = useCurrentFrame();
+// 	const { fps } = useVideoConfig();
+
+// 	const scale = spring({
+// 		fps,
+// 		frame,
+// 		config: {
+// 			damping: 5, // Adjust the damping for the spring animation
+// 			mass: 0.5, // Adjust the mass for the spring animation
+// 			stiffness: 0.5, // Adjust the stiffness for the spring animation
+// 		},
+// 	});
+
+// 	return <div style={{ transform: `scale(${scale})` }}>{children}</div>;
+// };
+
+interface HeartbeatIconProps {
+	children: React.ReactNode;
+	beatDurationSeconds: number;
+	waitTimeSeconds: number;
+}
+
+const HeartbeatIcon: React.FC<HeartbeatIconProps> = ({
+	children,
+	beatDurationSeconds,
+	waitTimeSeconds,
+}) => {
+	const frame = useCurrentFrame();
+	const { fps } = useVideoConfig();
+
+	// Calculate the total duration of one cycle (beat + wait)
+	const totalCycleDuration = fps * (beatDurationSeconds + waitTimeSeconds);
+
+	// Calculate the current time within the cycle
+	const timeWithinCycle = frame % totalCycleDuration;
+
+	// Determine if the icon should beat or wait based on the current time within the cycle
+	const isBeating = timeWithinCycle <= fps * beatDurationSeconds;
+
+	// Calculate progress for the beating effect
+	const beatProgress = isBeating
+		? timeWithinCycle / (fps * beatDurationSeconds)
+		: 0;
+
+	// Use Math.sin to create an oscillating effect only during the beating period
+	const scale = isBeating ? 1 + 0.1 * Math.sin(beatProgress * 2 * Math.PI) : 1;
+
+	return (
+		<div style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}>
+			{children}
+		</div>
+	);
+};
+
+interface JiggleMotionProps {
+	children: React.ReactNode;
+	waitTime: number; // The wait time in seconds before the jiggle starts
+}
+
+const JiggleMotion: React.FC<JiggleMotionProps> = ({
+	children,
+	waitTime, // Destructure waitTime from props
+}) => {
+	const frame = useCurrentFrame();
+	const { fps } = useVideoConfig();
+
+	// Duration of the jiggle in frames
+	const jiggleDuration = fps * 0.5; // Half a second jiggle
+
+	const time = frame / fps;
+
+	// Calculate complete waiting cycles elapsed
+	const completeCycles = Math.floor(time / waitTime);
+
+	// The time since the last complete cycle
+	const timeSinceLastCycle = time - completeCycles * waitTime;
+
+	// Determine if jiggle should occur
+	const shouldJiggle = timeSinceLastCycle < jiggleDuration / fps;
+
+	// Calculate progress of the jiggle
+	const progress = shouldJiggle
+		? Math.sin((timeSinceLastCycle / (jiggleDuration / fps)) * Math.PI * 4)
+		: 0;
+
+	// Translation is 0 when shouldJiggle is false
+	const translation = shouldJiggle
+		? interpolate(progress, [-1, 1], [-7, 7], {
+				easing: Easing.easeInOutSine,
+		  })
+		: 0;
+
+	// Apply the translation
+	return (
+		<div style={{ transform: `translateX(${translation}px)` }}>{children}</div>
+	);
+};
+
 export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 	bgColor,
 	subtitlesFileName,
@@ -324,12 +426,19 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 									marginTop: '14px',
 								}}
 							>
-								<YouTubeLike />
+								<HeartbeatIcon beatDurationSeconds={2} waitTimeSeconds={5}>
+									<YouTubeLike />
+								</HeartbeatIcon>
 								{/* <Like /> */}
-								<YouTubeComment />
+
+								<JiggleMotion waitTime={7}>
+									<YouTubeComment />
+								</JiggleMotion>
 								{/* <Comment /> */}
 								{/* <Share /> */}
-								<YouTubeShare />
+								<HeartbeatIcon beatDurationSeconds={3} waitTimeSeconds={6}>
+									<YouTubeShare />
+								</HeartbeatIcon>
 							</div>
 						</h2>
 					</div>
