@@ -361,7 +361,7 @@ export const AudiogramComposition: React.FC<AudiogramCompositionSchemaType> = ({
 						}}
 					>
 						{/* <Box /> */}
-						<BlurBubble />
+						{/* <BlurBubble /> */}
 
 						<div className="glass-effect">
 							<div className="row from-top">
