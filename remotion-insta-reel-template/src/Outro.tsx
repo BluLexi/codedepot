@@ -10,19 +10,19 @@ import { z } from 'zod';
 
 const style: React.CSSProperties = {
 	position: 'absolute',
-	width: 500,
-	height: 500,
-	top: 'calc(50% - 350px)',
-	left: 'calc(50% - 250px)',
+	width: 400,
+	height: 400,
+	top: 'calc(50% - 300px)',
+	left: 'calc(50% - 200px)',
 };
 
 const title: React.CSSProperties = {
 	fontFamily: 'Montserrat',
 	fontWeight: 'bold',
-	fontSize: 64,
+	fontSize: 60,
 	textAlign: 'center',
 	position: 'absolute',
-	bottom: 660,
+	bottom: 640,
 	width: '100%',
 	padding: '0 50px',
 };
@@ -46,7 +46,7 @@ export const Logo: React.FC<z.infer<typeof myCompSchema2>> = ({
 		<AbsoluteFill>
 			<Img
 				style={{ ...style, opacity }}
-				src={staticFile('logo.jpg')}
+				src={staticFile('Logo.png')}
 				placeholder="logo"
 			/>
 			{/* <div style={{ ...title, opacity }}>{titleText}</div> */}

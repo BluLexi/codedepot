@@ -1,10 +1,10 @@
 import { staticFile } from 'remotion';
 
 // ! Change inputs here
-const videoLength = 49;
+const videoLength = 50;
 const outroLength = 5;
-const number = 13
-const word = 'Maintain'
+const number = 14
+const word = 'Negligible'
 const name = `${number}.${word}`
 const delay = 0.5
 // '#0a60af' '#5D3587' '#820300' '#3559E0' '#65B741'
